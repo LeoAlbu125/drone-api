@@ -40,34 +40,40 @@ def db_drop_and_create_all():
     db.drop_all()
     db.create_all()
     # add one demo row which is helping in POSTMAN test
+
     
-    
-    drone = Drone(
+    drones = Drone(
+        id=1,
         drone_name="Falcon_blue",
         drone_model="T001"
+        
     )
-    drone.insert()
-    photo = Photo(
-            tag='test',
-            content='asdad123asd23423asd1231asdasdadsa',
-            drone_id=1
-        )
+    drones.insert()
 
-    photo.insert()
+    photos = Photo(
+        tag='test',
+        content='asdad123asd23423asd1231asdasdadsa',
+        drone_id=1
+    )
 
-
-
+    photos.insert()
+     
 class Drone(db.Model):
+    __tablename__ = 'drone'
 
-    id = Column(Integer().with_variant(Integer, "sqlite"), primary_key=True)
+    id = Column(Integer(), primary_key=True)
 
     drone_name = Column(String(180), unique=True)
 
-    drone_model = Column(String(180), nullable=False)
+    drone_model = Column(String(180))
     
-    photos = db.relationship('Photo', backref="Drone", lazy=True)
+    photos = db.relationship('Photo', backref="drone")
 
-
+    def short(self):
+        return {
+            'id': self.id,
+            'drone_name': self.drone_name
+        }
     
     def insert(self):
         db.session.add(self)
@@ -88,15 +94,25 @@ class Drone(db.Model):
         })
 
 
+
 class Photo(db.Model):
 
+    __tablename__ = 'Photo'
+    
     id = Column(Integer(), primary_key=True)
 
     tag = Column(String(80))
   
     content = Column(String(10000), nullable=False)
 
-    drone_id = Column(Integer(),ForeignKey('Drone.id'),nullable=False)
+    drone_id = Column(Integer(),ForeignKey('drone.id'),nullable=False)
+
+    def short(self):
+        return {
+            'id': self.id,
+            'tag': self.tag,
+            'drone_id': self.drone_id
+        }
 
     def insert(self):
         db.session.add(self)
@@ -116,3 +132,4 @@ class Photo(db.Model):
             "content":self.content,
             "drone_id":self.drone_id
         })
+        
