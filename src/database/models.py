@@ -41,19 +41,19 @@ def db_drop_and_create_all():
     db.create_all()
     # add one demo row which is helping in POSTMAN test
     
-    drink.insert()
+    
     drone = Drone(
         drone_name="Falcon_blue",
         drone_model="T001"
     )
-
+    drone.insert()
     photo = Photo(
             tag='test',
             content='asdad123asd23423asd1231asdasdadsa',
             drone_id=1
         )
 
-    drink.insert()
+    photo.insert()
 
 
 
@@ -67,8 +67,7 @@ class Drone(db.Model):
     
     photos = db.relationship('Photo', backref="Drone", lazy=True)
 
-    def short(self):
-        
+
     
     def insert(self):
         db.session.add(self)
