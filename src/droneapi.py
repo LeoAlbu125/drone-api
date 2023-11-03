@@ -4,8 +4,8 @@ from sqlalchemy import exc
 import json
 from flask_cors import CORS
 try:
-    from .database.models import db_drop_and_create_all, setup_db, Drone, Photo
-    from .auth.auth import AuthError, requires_auth
+    from src.database.models import db_drop_and_create_all, setup_db, Drone, Photo
+    from src.auth.auth import AuthError, requires_auth
 except:
     from database.models import db_drop_and_create_all, setup_db, Drone, Photo
     from auth.auth import AuthError, requires_auth
