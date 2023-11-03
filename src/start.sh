@@ -1,2 +1,2 @@
 export FLASK_APP=droneapi.py
-flask run
+flask run -p 5050
