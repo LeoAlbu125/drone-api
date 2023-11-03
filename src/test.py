@@ -11,7 +11,7 @@ import dotenv
 
 
 dotenv.load_dotenv(dotenv.find_dotenv())
-
+#database_path = os.getenv("DB_NAME")
 #database_filename = "database.db"
 #project_dir = os.path.dirname(os.path.abspath(__file__))
 #database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filename))
