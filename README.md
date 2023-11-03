@@ -1,5 +1,7 @@
 # Drone API
 
+I was motivated to create this API because in the future I will implement more endpoint and use it to communicate with small drones that I will create later, so to hit two bunnies with only one slash I made this to store images and register my drones, later I will implement some face recognition models together with the API to make some expiriments with my drones.
+
 ## Getting Started
 
 ### Installing Dependencies
@@ -26,7 +28,7 @@ This will install all of the required packages we selected within the `requireme
 
 - [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
 - [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./src/database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
-- [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
+- [python-jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
 
 ## Running the server locally
 
@@ -58,7 +60,7 @@ The `--reload` flag will detect file changes and restart the server automaticall
 
 ## Using the exposed link
 
-If you dont want to run locally you can use it with the public [link](https://drone-api-0-001.onrender.com). (there is a problem with tests running in the online DB, some of them fail because the DB "receives too much connections at the same time")
+If you dont want to run locally you can use it with the public **[link](https://drone-api-0-001.onrender.com)**. (there is a problem with tests running in the online DB, some of them fail because the DB "receives too much connections at the same time")
 
 # API Reference
 
