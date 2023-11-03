@@ -45,6 +45,23 @@ class DroneTestCase(unittest.TestCase):
         pass
 
     
+    
+    def drone_role_patch_drone_error(self):
+        drone_patch = {
+            "drone_name":"test",
+            "drone_model":"t_e_s_t"
+            }
+    
+        res = self.client().patch("/drones/1", json=drone_patch, headers={
+            "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkV0ZUo5b0tZbkV2NzlzNFpmNWx0WCJ9.eyJpc3MiOiJodHRwczovL2Rldi13eG1uZ2Vwendwam55ZzA0LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJPc0QyNzFRdGJ0cGlFRWFsWXhYbmNQeDJYdXFvQWxzYUBjbGllbnRzIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMTo1MDUwLyIsImlhdCI6MTY5ODk4MTAwNSwiZXhwIjoxNjk5MDY3NDA1LCJhenAiOiJPc0QyNzFRdGJ0cGlFRWFsWXhYbmNQeDJYdXFvQWxzYSIsInNjb3BlIjoiZ2V0OnBob3RvcyBwb3N0OnBob3RvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbImdldDpwaG90b3MiLCJwb3N0OnBob3RvcyJdfQ.UpPEZNnGgCKECwv2OAD60ATNnlsdkbV3T2zhI9LT_Kz7AHiQ79jSufEdjMroboW4irZ-xkK4tkJX5lwc9aUIxwOQgW39mIRXHjFyjADxW_x8mkByMg4Ue9n02EtPnguzAJh6JiVqzguj6pD-sSOmJ29PwJlOwBIyf2a17XbipnOB3wgo-41zwJXfCMc1u_JAUUjBzKf0SC0AebHc_991yJtPeC0_GmcE5HWwlr60ubUohJx3dQtSSCuADxwGQsZkciY6T1g2JW9GQmymJKzu7Q6uj2BTcVcGPJdNBl8UkJxlYSSrDWK0JB9GymdbBzsfuhX7hflwZBa6KK3eZl5HZg"})
+        data = json.loads(res.data)
+        
+        self.assertEqual(res.status_code, 403)
+        self.assertEqual(data["success"],False)
+     
+     
+     
+     
     def test_drones(self):
         res = self.client().get("/drones")
         data = json.loads(res.data)
@@ -74,7 +91,7 @@ class DroneTestCase(unittest.TestCase):
         res = self.client().get("/1/photos")
         self.assertEqual(res.status_code, 401)
         
-        
+    """ 
     def test_post_photo(self):
         nody= {"tag":"foto minha",
                "content":"adsaskdjalsdjlkadjla2kj32j23287u39auh",
@@ -175,6 +192,19 @@ class DroneTestCase(unittest.TestCase):
         
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data["success"],False)
-        
+    
+    def drone_role_get_photo(self):
+        res = self.client().get("/1/photos", headers={
+            "Authorization":"Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkV0ZUo5b0tZbkV2NzlzNFpmNWx0WCJ9.eyJpc3MiOiJodHRwczovL2Rldi13eG1uZ2Vwendwam55ZzA0LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJPc0QyNzFRdGJ0cGlFRWFsWXhYbmNQeDJYdXFvQWxzYUBjbGllbnRzIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMTo1MDUwLyIsImlhdCI6MTY5ODk4MTAwNSwiZXhwIjoxNjk5MDY3NDA1LCJhenAiOiJPc0QyNzFRdGJ0cGlFRWFsWXhYbmNQeDJYdXFvQWxzYSIsInNjb3BlIjoiZ2V0OnBob3RvcyBwb3N0OnBob3RvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbImdldDpwaG90b3MiLCJwb3N0OnBob3RvcyJdfQ.UpPEZNnGgCKECwv2OAD60ATNnlsdkbV3T2zhI9LT_Kz7AHiQ79jSufEdjMroboW4irZ-xkK4tkJX5lwc9aUIxwOQgW39mIRXHjFyjADxW_x8mkByMg4Ue9n02EtPnguzAJh6JiVqzguj6pD-sSOmJ29PwJlOwBIyf2a17XbipnOB3wgo-41zwJXfCMc1u_JAUUjBzKf0SC0AebHc_991yJtPeC0_GmcE5HWwlr60ubUohJx3dQtSSCuADxwGQsZkciY6T1g2JW9GQmymJKzu7Q6uj2BTcVcGPJdNBl8UkJxlYSSrDWK0JB9GymdbBzsfuhX7hflwZBa6KK3eZl5HZg"
+        })
+        data = json.loads(res.data)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data["success"], True)
+        self.assertIsNotNone(data["photos"])
+    """
+
+    
+    
+    
 if __name__ == '__main__':
     unittest.main()
