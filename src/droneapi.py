@@ -19,10 +19,10 @@ def create_app(test_config=None):
     CORS(app)
 
 
-    db_drop_and_create_all()
+    #db_drop_and_create_all()
 
     # ROUTES
-
+    
     @app.after_request
     def after_request(response):
         response.headers.add('Access-Control-Allow-Headers',
