@@ -22,6 +22,8 @@ pip install -r requirements.txt
 
 This will install all of the required packages we selected within the `requirements.txt` file.
 
+If you are facing problens with libs compatibility try to use the requirements_v2.txt instead.
+
 ##### Key Dependencies
 
 - [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
@@ -46,7 +48,11 @@ flask run -p 5050
 
 The `--reload` flag will detect file changes and restart the server automatically.
 
-## Tasks
+## API Reference
+
+
+
+
 
 Set up documantation
 
