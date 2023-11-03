@@ -109,7 +109,6 @@ class Photo(db.Model):
 
     def short(self):
         return {
-            'id': self.id,
             'tag': self.tag,
             'drone_id': self.drone_id
         }

@@ -1,4 +1,4 @@
-# Coffee Shop Backend
+# Drone API
 
 ## Getting Started
 
@@ -28,7 +28,7 @@ This will install all of the required packages we selected within the `requireme
 - [SQLAlchemy](https://www.sqlalchemy.org/) and [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) are libraries to handle the lightweight sqlite database. Since we want you to focus on auth, we handle the heavy lift for you in `./src/database/models.py`. We recommend skimming this code first so you know how to interface with the Drink model.
 - [jose](https://python-jose.readthedocs.io/en/latest/) JavaScript Object Signing and Encryption for JWTs. Useful for encoding, decoding, and verifying JWTS.
 
-## Running the server
+## Running the server locally
 
 From within the `./src` directory first ensure you are working using your created virtual environment.
 
@@ -41,7 +41,7 @@ export FLASK_APP=api.py;
 To run the server, execute:
 
 ```bash
-flask run --reload
+flask run -p 5050
 ```
 
 The `--reload` flag will detect file changes and restart the server automatically.
